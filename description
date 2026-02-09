@@ -1,0 +1,3 @@
+Control your phone from your Raspberry Pi.
+Pi-Link Pro allows you to receive notifications and answer or reject phone calls directly from your desktop. It uses Bluetooth HFP (Hands-Free Profile) to bridge your mobile device with your Pi.
+Note: A reboot is required after installation to apply Bluetooth permissions.
