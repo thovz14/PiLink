@@ -1,20 +1,26 @@
 #!/bin/bash
 # Pi-Link Pro - Official Pi-Apps Installer
+# Gebruikt de officiële Pi-Apps API functies
 
-# Use Pi-Apps package helper to install system requirements
+# Importeer de Pi-Apps API om functies zoals install_packages te kunnen gebruiken
+source "$(dirname "$(dirname "$0")")/api" || exit 1
+
+status "Installing system requirements..."
+# install_packages zorgt voor veilig beheer van dependencies via een dummy-deb
 install_packages python3-pip python3-pyqt6 ofono bluez dbus python3-gi python3-dbus || error "Failed to install system packages"
 
-# Install Python libraries
+status "Installing Python libraries..."
 pip3 install bleak pydbus --break-system-packages || error "Failed to install Python libraries"
 
-# Configure hardware permissions for the user
+status "Configuring hardware permissions..."
 sudo usermod -a -G bluetooth $USER || error "Failed to set bluetooth permissions"
 
-# Enable and start the telephony stack (oFono)
+status "Starting telephony stack (oFono)..."
 sudo systemctl enable ofono || error "Failed to enable ofono service"
 sudo systemctl start ofono || error "Failed to start ofono service"
 
-# Create the desktop entry/menu button
+status "Creating desktop shortcut..."
+# Genereert de menu-knop in de Raspberry Pi menu-balk
 echo "[Desktop Entry]
 Name=Pi-Link Pro
 GenericName=Mobile Dashboard
@@ -27,4 +33,4 @@ Categories=Utility;Communications;" > $HOME/.local/share/applications/pilink.des
 
 chmod +x $HOME/.local/share/applications/pilink.desktop
 
-echo "✅ Installation successful! PLEASE REBOOT YOUR PI to activate permissions."
+status_green "Installation successful! PLEASE REBOOT YOUR PI to activate permissions."
