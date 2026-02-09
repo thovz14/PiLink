@@ -1,10 +1,14 @@
 #!/bin/bash
 # Pi-Link Pro - Official Pi-Apps Uninstaller
 
-# Remove the packages installed via Pi-Apps
+# Importeer de Pi-Apps API
+source "$(dirname "$(dirname "$0")")/api" || exit 1
+
+status "Removing Pi-Link Pro packages..."
+# purge_packages verwijdert alleen pakketten die niet door andere apps nodig zijn
 purge_packages || error "Failed to remove packages"
 
-# Remove the menu button/desktop entry
+status "Cleaning up desktop entries..."
 rm -f $HOME/.local/share/applications/pilink.desktop
 
-echo "Pi-Link Pro has been successfully uninstalled."
+status_green "Pi-Link Pro has been successfully uninstalled."
