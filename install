@@ -1,0 +1,30 @@
+#!/bin/bash
+# Pi-Link Pro - Official Pi-Apps Installer
+
+# Use Pi-Apps package helper to install system requirements
+install_packages python3-pip python3-pyqt6 ofono bluez dbus python3-gi python3-dbus || error "Failed to install system packages"
+
+# Install Python libraries
+pip3 install bleak pydbus --break-system-packages || error "Failed to install Python libraries"
+
+# Configure hardware permissions for the user
+sudo usermod -a -G bluetooth $USER || error "Failed to set bluetooth permissions"
+
+# Enable and start the telephony stack (oFono)
+sudo systemctl enable ofono || error "Failed to enable ofono service"
+sudo systemctl start ofono || error "Failed to start ofono service"
+
+# Create the desktop entry/menu button
+echo "[Desktop Entry]
+Name=Pi-Link Pro
+GenericName=Mobile Dashboard
+Comment=Control your phone calls and notifications
+Exec=python3 $(dirname "$0")/Main.py
+Icon=$(dirname "$0")/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;Communications;" > $HOME/.local/share/applications/pilink.desktop
+
+chmod +x $HOME/.local/share/applications/pilink.desktop
+
+echo "✅ Installation successful! PLEASE REBOOT YOUR PI to activate permissions."
