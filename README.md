@@ -25,9 +25,9 @@ This application is designed for the Raspberry Pi and is available through **Pi-
 
 ## 📖 Usage
 
-**Pairing:** First, pair your smartphone with your Raspberry Pi using the standard system Bluetooth settings.
-
 **Launch:** Start Pi-Link Pro from your application menu.
+
+**Pairing:** First, pair your smartphone with the installation program in the app or with the Raspberry Pi using the standard system Bluetooth settings.
 
 **Setup:** Select your phone from the list inside the app to begin monitoring.
 
@@ -40,6 +40,7 @@ If you encounter issues or have suggestions:
 * Open an Issue on this GitHub repository.
 * Include your Raspberry Pi model and OS version.
 
+* Join my discord and send suggestions or issues in The discord below
 ---
 
 ## ⚖️ Copying & License
