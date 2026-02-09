@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QStackedWidget, QWidget,
                              QFrame, QScrollArea)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QTimer, QPropertyAnimation, QRect, QEasingCurve
 
-# --- HARDWARE IMPORTS ---
+# --- HARDWARE CONNECTIVITY ---
 try:
     from bleak import BleakScanner
     from pydbus import SystemBus
@@ -19,7 +19,7 @@ except (ImportError, ModuleNotFoundError):
 
 SETTINGS_FILE = os.path.join(os.path.dirname(__file__), "settings.json")
 
-# --- PRODUCTION STYLING ---
+# --- UI STYLING (GLASSMORPHISM) ---
 STYLE_SHEET = """
 QMainWindow { background-color: #0b0b1a; }
 QWidget { color: #ffffff; font-family: 'Segoe UI', sans-serif; }
@@ -38,6 +38,8 @@ QPushButton {
     border: none; 
 }
 
+QPushButton:hover { background-color: #00f2fe; }
+
 #AcceptBtn { background-color: #28a745; border-radius: 35px; font-size: 26px; }
 #RejectBtn { background-color: #ff3b30; border-radius: 35px; font-size: 26px; }
 
@@ -51,14 +53,14 @@ QPushButton {
 """
 
 class CallMonitorThread(QThread):
-    """REAL-TIME HARDWARE LISTENER"""
+    """REAL-TIME HARDWARE LISTENER FOR INCOMING CALLS"""
     incoming_call = pyqtSignal(str)
 
     def run(self):
         if not DBUS_AVAILABLE: return
         try:
             bus = SystemBus()
-            # Subscribe to oFono for hardware call events
+            # Subscribe to oFono VoiceCallManager for hardware events
             bus.subscribe(sender='org.ofono', signal='CallAdded', callback=self.on_call_added)
             loop = GLib.MainLoop()
             loop.run()
@@ -88,7 +90,7 @@ class PiLinkApp(QMainWindow):
         self.active_popup = None
         self.seconds_active = 0
         
-        # Start Hardware Monitor
+        # Start Hardware Monitoring
         self.monitor = CallMonitorThread()
         self.monitor.incoming_call.connect(self.show_call_popup)
         self.monitor.start()
@@ -189,7 +191,8 @@ class PiLinkApp(QMainWindow):
         self.active_popup.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.active_popup.setFixedSize(480, 160)
         
-        frame = QFrame(self.active_popup); frame.setObjectName("FloatingContainer"); frame.setFixedSize(480, 160); frame.setStyleSheet(STYLE_SHEET)
+        frame = QFrame(self.active_popup); frame.setObjectName("FloatingContainer")
+        frame.setFixedSize(480, 160); frame.setStyleSheet(STYLE_SHEET)
         l = QHBoxLayout(frame)
         
         v = QVBoxLayout()
@@ -219,7 +222,7 @@ class PiLinkApp(QMainWindow):
                     call_obj = bus.get('org.ofono', calls[0][0])
                     call_obj.Answer()
             except: pass
-        self.call_timer.start(1000); self.add_log("Call Picked Up")
+        self.call_timer.start(1000); self.add_log("Call Answered")
 
     def handle_reject(self):
         if DBUS_AVAILABLE:
@@ -229,7 +232,7 @@ class PiLinkApp(QMainWindow):
                 modem.HangupAll()
             except: pass
         if self.active_popup: self.active_popup.close(); self.active_popup = None
-        self.call_timer.stop(); self.seconds_active = 0; self.add_log("Call Ended")
+        self.call_timer.stop(); self.seconds_active = 0; self.add_log("Call Terminated")
 
     def tick_call_time(self):
         self.seconds_active += 1; m, s = divmod(self.seconds_active, 60)
