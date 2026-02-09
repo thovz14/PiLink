@@ -1,6 +1,6 @@
 # Pi-Link Pro 📱
 
-[![badge](https://github.com/Botspot/pi-apps/blob/master/icons/badge.png?raw=true)](https://github.com/Botspot/pi-apps)
+[![badge](https://github.com/Botspot/pi-apps/blob/master/icons/badge-light.png?raw=true)](https://github.com/Botspot/pi-apps)
 
 Pi-Link Pro is a professional mobile dashboard for Raspberry Pi users. It creates a seamless bridge between your smartphone and your Pi, allowing you to monitor activity and manage incoming calls directly from your desktop or touchscreen.
 
