@@ -28,3 +28,23 @@ git clone [https://github.com/thovz14/PiLink](https://github.com/thovz14/PiLink)
 cd PiLink
 chmod +x install
 ./install
+
+## **📖 Usage**
+
+    **Pairing:** First, pair your smartphone to your Raspberry Pi using the standard system Bluetooth settings.
+
+    **Launch:** Start Pi-Link Pro from your application menu.
+
+    **Setup:** Select your phone from the list in the app to start monitoring.
+
+🔧 Feedback & Bugs
+
+## If you encounter any issues or have suggestions for improvements:
+
+    Please open an Issue on this GitHub repository.
+
+    Provide details about your Raspberry Pi model and OS version.
+
+⚖️ Copying & License
+
+This project is provided "as is". You are free to use this software for personal use. For redistribution or commercial use, please contact the developer.
