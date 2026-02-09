@@ -21,14 +21,6 @@ This application is designed specifically for the Raspberry Pi and is compatible
 3. Click **Install**.
 4. **Important:** Reboot your Raspberry Pi after installation to activate the necessary Bluetooth permissions.
 
-## 🛠 Manual Installation
-If you prefer to install manually:
-```bash
-git clone [https://github.com/thovz14/PiLink](https://github.com/thovz14/PiLink)
-cd PiLink
-chmod +x install
-./install ```
-
 ## **📖 Usage**
 
     **Pairing:** First, pair your smartphone to your Raspberry Pi using the standard system Bluetooth settings.
@@ -48,3 +40,11 @@ chmod +x install
 ⚖️ Copying & License
 
 This project is provided "as is". You are free to use this software for personal use. For redistribution or commercial use, please contact the developer.
+
+## 🛠 Manual Installation
+If you prefer to install manually:
+```bash
+git clone [https://github.com/thovz14/PiLink](https://github.com/thovz14/PiLink)
+cd PiLink
+chmod +x install
+./install
