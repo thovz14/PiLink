@@ -2,49 +2,59 @@
 
 [![badge](https://github.com/Botspot/pi-apps/blob/master/icons/badge.png?raw=true)](https://github.com/Botspot/pi-apps)
 
-**Pi-Link Pro** is a professional mobile dashboard for Raspberry Pi users. It creates a seamless bridge between your smartphone and your Pi, allowing you to monitor activity and handle incoming calls directly from your desktop or touchscreen.
+Pi-Link Pro is a professional mobile dashboard for Raspberry Pi users. It creates a seamless bridge between your smartphone and your Pi, allowing you to monitor activity and manage incoming calls directly from your desktop or touchscreen.
 
 ---
 
 ## ✨ Features
-* **Call Management:** Receive notifications for incoming calls and answer/reject them via the interface.
+* **Call Management:** Receive notifications for incoming calls and answer or reject them through the interface.
 * **Hardware Integration:** Deep integration with the Raspberry Pi Bluetooth stack using oFono and DBus.
 * **Modern UI:** A clean, glassmorphism-inspired interface built with PyQt6.
-* **Smart Connection:** Automatically remembers your last connected device for a quick setup.
-* **Activity Logs:** Keep track of your system and call history in real-time.
+* **Smart Connection:** Automatically remembers your last connected device for quick setup.
+* **Activity Logs:** Track system activity and call history in real time.
 
 ## 🚀 Installation via Pi-Apps
-This application is designed specifically for the Raspberry Pi and is compatible with **Pi-Apps**.
+This application is designed for the Raspberry Pi and is available through **Pi-Apps**.
 
-1. Open **Pi-Apps**.
+1. Open Pi-Apps.
 2. Search for `Pi-Link Pro`.
-3. Click **Install**.
-4. **Important:** Reboot your Raspberry Pi after installation to activate the necessary Bluetooth permissions.
+3. Click Install.
+4. **Important:** Reboot your Raspberry Pi after installation to activate the required Bluetooth permissions.
 
-## **📖 Usage**
+---
 
-    **Pairing:** First, pair your smartphone to your Raspberry Pi using the standard system Bluetooth settings.
+## 📖 Usage
 
-    **Launch:** Start Pi-Link Pro from your application menu.
+**Pairing:** First, pair your smartphone with your Raspberry Pi using the standard system Bluetooth settings.
 
-    **Setup:** Select your phone from the list in the app to start monitoring.
+**Launch:** Start Pi-Link Pro from your application menu.
 
-🔧 Feedback & Bugs
+**Setup:** Select your phone from the list inside the app to begin monitoring.
 
-## If you encounter any issues or have suggestions for improvements:
+---
 
-    Please open an Issue on this GitHub repository.
+## 🔧 Feedback & Bugs
 
-    Provide details about your Raspberry Pi model and OS version.
+If you encounter issues or have suggestions:
 
-⚖️ Copying & License
+* Open an Issue on this GitHub repository.
+* Include your Raspberry Pi model and OS version.
 
-This project is provided "as is". You are free to use this software for personal use. For redistribution or commercial use, please contact the developer.
+---
+
+## ⚖️ Copying & License
+
+This project is provided "as is". You may use this software for personal use.  
+For redistribution or commercial use, please contact the developer.
+
+---
 
 ## 🛠 Manual Installation
-If you prefer to install manually:
+
+If you prefer manual installation:
+
 ```bash
-git clone [https://github.com/thovz14/PiLink](https://github.com/thovz14/PiLink)
+git clone https://github.com/thovz14/PiLink
 cd PiLink
 chmod +x install
 ./install
