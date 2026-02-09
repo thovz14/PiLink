@@ -27,7 +27,7 @@ If you prefer to install manually:
 git clone [https://github.com/thovz14/PiLink](https://github.com/thovz14/PiLink)
 cd PiLink
 chmod +x install
-./install
+./install ```
 
 ## **📖 Usage**
 
